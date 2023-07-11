@@ -1,5 +1,6 @@
 import java.util.*;
 
+/*
 class Solution {
     public int solution(int n, int[] lost, int[] reserve) {
         int answer = n - lost.length;
@@ -29,6 +30,38 @@ class Solution {
             }
         }
         
+        return answer;
+    }
+}
+*/
+
+class Solution {
+    public int solution(int n, int[] lost, int[] reserve) {
+        int answer = n;
+        int[] uniform = new int[n];
+        
+        Arrays.fill(uniform, 1);
+        
+        for (int r: reserve) {
+            uniform[r-1]++;
+        }
+        
+        for (int l: lost) {
+            uniform[l-1]--;
+        }
+                
+        for (int i = 0; i < n; i++) {
+            if (uniform[i] < 1) {
+                if (i-1 >= 0 && uniform[i-1] > 1) {
+                    uniform[i-1]--;
+                } else if (i+1 < n && uniform[i+1] > 1) {
+                    uniform[i+1]--;
+                } else {
+                    answer--;
+                }
+            }
+        }
+    
         return answer;
     }
 }
