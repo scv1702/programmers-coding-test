@@ -71,3 +71,24 @@ class Solution {
         return answer;
     }
 }
+
+/*
+import java.util.*;
+
+class Solution {
+    public int[] solution(int n, long left, long right) {
+        int answerLen = (int) (right - left + 1);
+        int answerIdx = 0;
+        int[] answer = new int[answerLen];
+        
+        for (long i = left; i <= right; i++) {
+            int y = (int) (i / n);
+            int x = (int) (i % n);
+            int element = Math.max(x, y) + 1;
+            answer[answerIdx++] = element;
+        }
+
+        return answer;
+    }
+}
+*/
